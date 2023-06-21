@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 function Auth(props) {
 
     const [authType, setAuthType] = useState('login');
-    const [password, setPassword] = useState('forget');
+    const [password, setPassword] = useState('forgot');
 
     return (
         <section id="appointment" className="appointment">
@@ -55,7 +56,7 @@ function Auth(props) {
             {
                 authType === 'login' ?
 
-                    <span>Change a password ?<a href="#" onClick={() => setPassword('forget')}>  Forget password</a> </span>
+                    <span>Change a password ?<Link to='/ForgotPass' onClick={() => setPassword('forgot')}>  Forgot Password</Link> </span>
                     : null
 
             }

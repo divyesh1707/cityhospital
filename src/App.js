@@ -11,6 +11,7 @@ import Doctor from './Container/Doctor';
 import Auth from './Container/Auth';
 import VisitingDoctors from './Container/VisitingDoctors';
 import NotFound from './Container/NotFound';
+import ForgotPass from './Container/ForgotPass';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
 
         {/* <Route path='*' element={<NotFound/>}/> */}
         <Route path='/Auth' element={<Auth/>}/>
+        <Route path='/ForgotPass' element={<ForgotPass/>}/>
       </Routes>
       <Footer />
     </>
