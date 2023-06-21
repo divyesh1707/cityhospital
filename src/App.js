@@ -8,19 +8,33 @@ import Departments from './Container/Department';
 import Doctors from './Container/Doctors';
 import { Routes, Route } from 'react-router-dom';
 import Doctor from './Container/Doctor';
+import Auth from './Container/Auth';
+import VisitingDoctors from './Container/VisitingDoctors';
+import NotFound from './Container/NotFound';
 
 function App() {
   return (
     <>
-      <Header/>
+      <Header />
       <Routes>
-        <Route path="/" element={<Home/>}/>
-          <Route path="/Department" element={<Departments/>}/>
-          <Route path="/Doctors" element={<Doctors/>}/>
-          <Route path="/About" element={<About/>}/>
-          <Route path="/Contact" element={<Contact/>}/>
-          <Route path="/Appointment" element={<Appointment/>}/>
-          <Route path="/Doctor" element={<Doctor/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/Department" element={<Departments />} />
+        <Route path="/Doctors" element={<Doctors />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Contact" element={<Contact />} />
+        <Route path="/Appointment" element={<Appointment />} />
+        {/* <Route path="/Auth" element={<Auth/>}/> */}
+        {/* <Route path="/Doctor/:id" element={<Doctor/>}/>
+          <Route path="/Doctor/visiting_doctors" element={<VisitingDoctors/>}/> */}
+
+        {/* Nested Route */}
+        <Route path='/Doctor'>
+          <Route path=":id" element={<Doctor />} />
+          <Route path="visiting_doctors" element={<VisitingDoctors />} />
+        </Route>
+
+        {/* <Route path='*' element={<NotFound/>}/> */}
+        <Route path='/Auth' element={<Auth/>}/>
       </Routes>
       <Footer />
     </>

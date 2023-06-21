@@ -41,8 +41,13 @@ function Doctor(props) {
 
     const { id } = useParams();
 
+    const fdata = doctordata.filter((v) => v.id === parseInt(id))
+        console.log(fdata);
+
+
     return (
         <div className="row">
+
             {
                 doctordata.map((v) => {
                     if (id == v.id) {
@@ -52,9 +57,9 @@ function Doctor(props) {
                                 <div className="member d-flex align-items-start">
                                     <div className="pic"><img src={v.url} className="img-doctor-" alt /></div>
                                     <div className="member-info-">
-                                        <p><span> Dr Name :   </span> {v.name}</p>
-                                        <p><span>Dr Designation :   </span>{v.designation}</p>
-                                        <p><span>Dr Description :   </span> {v.description}</p>
+                                        <p><span>Dr Name :   </span> {v.name}</p>
+                                        <p><span>Designation :   </span>{v.designation}</p>
+                                        <p><span>Description :   </span> {v.description}</p>
                                         <div className="social-">
                                             <a href><i className="ri-twitter-fill" /></a>
                                             <a href><i className="ri-facebook-fill" /></a>

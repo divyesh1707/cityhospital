@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Header(props) {
     return (
@@ -33,7 +33,8 @@ function Header(props) {
                             <li><Link className="nav-link scrollto" to={"/Doctors"}>Doctors</Link></li>
                             <li><Link className="nav-link scrollto " to={"/About"}>About</Link></li>
                             <li><Link className="nav-link scrollto" to={"/Contact"}>Contact</Link></li>
-                            <li><Link className="nav-link scrollto" to={"/Doctor"}>Doctor</Link></li>
+                            <li><Link className="nav-link scrollto" to={"/Appointment"}>Appointment</Link></li>
+                            <li><Link className="nav-link scrollto" to={"/Auth"}></Link></li>
                         </ul>
                         <i className="bi bi-list mobile-nav-toggle" />
                     </nav>
