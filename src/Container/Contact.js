@@ -1,6 +1,41 @@
 import React from 'react';
+import { useFormik } from 'formik';
 
 function Contact(props) {
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            email: '',
+            subject: '',
+            message: ''
+        },
+        validate: (values) => {
+            const errors = {};
+
+            if (!values.name) {
+                errors.name = 'Required';
+            }
+
+            if (!values.email) {
+                errors.email = 'Required';
+            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+                errors.email = 'Invalid email address';
+            }
+
+            if (!values.subject) {
+                errors.subject = 'Required';
+            }
+
+            if (!values.message) {
+                errors.message = 'Required';
+            }
+
+            return errors;
+        },
+        onSubmit: (values) => {
+            console.log(values);
+        }
+    });
     return (
         <section id="contact" className="contact">
             <div className="container">
@@ -59,8 +94,10 @@ function Contact(props) {
                 </div>
             </div>
         </section>
-
     );
 }
-
 export default Contact;
+
+
+
+
