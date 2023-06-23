@@ -32,7 +32,7 @@ function Header(props) {
                             <li><Link className="nav-link scrollto" to={"/Department"}>Departments</Link></li>
                             <li><Link className="nav-link scrollto" to={"/Doctors"}>Doctors</Link></li>
                             <li><Link className="nav-link scrollto " to={"/About"}>About</Link></li>
-                            <li><Link className="nav-link scrollto" to={"/Contact"}>Contact</Link></li>
+                            <li><Link className="nav-link scrollto" to={"/Contact1"}>Contact</Link></li>
                             {/* <li><Link className="nav-link scrollto" to={"/Appointment"}>Appointment</Link></li> */}
                             {/* <li><Link className="nav-link scrollto" to={"/Auth"}>Auth</Link></li> */}
                         </ul>

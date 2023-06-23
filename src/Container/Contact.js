@@ -9,31 +9,33 @@ function Contact(props) {
             subject: '',
             message: ''
         },
-        validate: (values) => {
+        validate: (v) => {
             const errors = {};
 
-            if (!values.name) {
+            if (!v.name) {
                 errors.name = 'Required';
             }
 
-            if (!values.email) {
+            if (!v.email) {
                 errors.email = 'Required';
-            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(v.email)) {
                 errors.email = 'Invalid email address';
             }
 
-            if (!values.subject) {
+            if (!v.subject) {
                 errors.subject = 'Required';
             }
 
-            if (!values.message) {
+            if (!v.message.length > 10) {
+                errors.message = '';
+            }else{
                 errors.message = 'Required';
             }
 
             return errors;
         },
-        onSubmit: (values) => {
-            console.log(values);
+        onSubmit: (v) => {
+            console.log(v);
         }
     });
     return (

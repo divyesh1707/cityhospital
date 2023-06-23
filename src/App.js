@@ -3,7 +3,7 @@ import Footer from './Component/Footer';
 import Home from './Container/Home';
 import About from './Container/About';
 import Appointment from './Container/Appointment';
-import Contact from './Container/Contact';
+import Contact from './Container/Contact1';
 import Departments from './Container/Department';
 import Doctors from './Container/Doctors';
 import { Routes, Route } from 'react-router-dom';
@@ -13,6 +13,7 @@ import VisitingDoctors from './Container/VisitingDoctors';
 import NotFound from './Container/NotFound';
 import ForgotPass from './Container/ForgotPass';
 import Auth1 from './Container/Auth1';
+import Contact1 from './Container/Contact1';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
         <Route path="/Department" element={<Departments />} />
         <Route path="/Doctors" element={<Doctors />} />
         <Route path="/About" element={<About />} />
-        <Route path="/Contact" element={<Contact/>} />
+        <Route path="/Contact1" element={<Contact1/>} />
         <Route path="/Appointment" element={<Appointment />} />
         {/* <Route path="/Auth" element={<Auth/>}/> */}
         {/* <Route path="/Doctor/:id" element={<Doctor/>}/>
