@@ -15,6 +15,7 @@ import ForgotPass from '../user/Container/ForgotPass';
 import Auth1 from '../user/Container/Auth1';
 import Contact1 from '../user/Container/Contact1';
 import Auth from '../user/Container/Auth';
+import UseMedicines from '../user/Container/Medicines/UseMedicines';
 
 function UserRoutes(props) {
     return (
@@ -28,6 +29,7 @@ function UserRoutes(props) {
                 <Route path="/Contact1" element={<Contact1 />} />
                 <Route path="/Appointment" element={<Appointment />} />
                 <Route path="/Auth" element={<Auth />} />
+                <Route path='/UseMedicines' element={<UseMedicines/>}/>
                 {/* <Route path="/Doctor/:id" element={<Doctor/>}/>
           <Route path="/Doctor/visiting_doctors" element={<VisitingDoctors/>}/> */}
 

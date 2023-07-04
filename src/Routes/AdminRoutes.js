@@ -5,6 +5,7 @@ import Department from '../admin/Container/Department';
 import Medicines from '../admin/Container/Medicines'
 import Appointment from '../user/Container/Appointment';
 import Layout from '../admin/Component/Layout';
+import CustomTable from '../admin/Container/CustomTable';
 
 function AdminRoutes(props) {
     return (
@@ -16,6 +17,7 @@ function AdminRoutes(props) {
                         <Route path='department' element={<Department />} />
                         <Route path='medicines' element={<Medicines />} />
                         <Route path='appointment' element={<Appointment />} />
+                        <Route path='customTable' element={<CustomTable />} />
                     </Routes>
                 </Layout>
             </>
