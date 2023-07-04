@@ -1,45 +1,45 @@
-import { Formik, useFormik,  } from 'formik';
+import { Formik, useFormik, } from 'formik';
 import React from 'react';
 import * as yup from 'yup';
 
 function Contact1(props) {
 
     let userSchema = yup.object({
-        name: yup.string().required('please enter a name').matches( /^[a-zA-Z ]+$/,'please enter a valid name'),
+        name: yup.string().required('please enter a name').matches(/^[a-zA-Z ]+$/, 'please enter a valid name'),
         email: yup.string().email().required('please enter a email'),
-        subject:  yup.string().required('please enter a subject'),
-        message:  yup.string().required('please enter a message')
-        .test('message','maximum 5 word allowed',
-        
-        function(val){
-            let arr = val.split(" ")
+        subject: yup.string().required('please enter a subject'),
+        message: yup.string().required('please enter a message')
+            .test('message', 'maximum 5 word allowed',
 
-            if(arr.length > 5){
-                return false
-            }else{
-                return true
-            }
-        }
+                function (val) {
+                    let arr = val.split(" ")
 
-        )
-        
+                    if (arr.length > 5) {
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+
+            )
+
     });
 
     const formik = useFormik({
-        validationSchema : userSchema,
+        validationSchema: userSchema,
 
         initialValues: {
-          name: '',
-          email: '',
-          subject: '',
-          message:''
+            name: '',
+            email: '',
+            subject: '',
+            message: ''
         },
         onSubmit: values => {
-            
-        },
-      });
 
-    const {values,errors,handleBlur,handleChange,handleSubmit,touched} = formik;
+        },
+    });
+
+    const { values, errors, handleBlur, handleChange, handleSubmit, touched } = formik;
 
     return (
         <section id="contact" className="contact">
@@ -85,7 +85,7 @@ function Contact1(props) {
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                     />
-                                    <span className='fromError'  style={{ color: 'red' }}>{errors.name && touched.name ?  errors.name : null}</span>
+                                    <span className='fromError' style={{ color: 'red' }}>{errors.name && touched.name ? errors.name : null}</span>
                                 </div>
                                 <div className="col-md-6 form-group mt-3 mt-md-0">
                                     <input type="email"
@@ -97,7 +97,7 @@ function Contact1(props) {
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                     />
-                                    <span className='fromError' style={{ color: 'red' }}>{errors.email && touched.email ?  errors.email : null}</span>
+                                    <span className='fromError' style={{ color: 'red' }}>{errors.email && touched.email ? errors.email : null}</span>
 
                                 </div>
                             </div>
@@ -111,7 +111,7 @@ function Contact1(props) {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                 />
-                                <span className='fromError' style={{ color: 'red' }}>{errors.subject && touched.subject ?  errors.subject : null}</span>
+                                <span className='fromError' style={{ color: 'red' }}>{errors.subject && touched.subject ? errors.subject : null}</span>
                             </div>
                             <div className="form-group mt-3">
                                 <textarea className="form-control"
@@ -122,7 +122,7 @@ function Contact1(props) {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                 />
-                                <span className='fromError' style={{ color: 'red' }}>{errors.message && touched.message ?  errors.message : null}</span>
+                                <span className='fromError' style={{ color: 'red' }}>{errors.message && touched.message ? errors.message : null}</span>
                             </div>
                             <div className="my-3">
                                 <div className="loading">Loading</div>
@@ -135,7 +135,6 @@ function Contact1(props) {
                 </div>
             </div>
         </section>
-
     );
 }
 
