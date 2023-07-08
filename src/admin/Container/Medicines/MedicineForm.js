@@ -8,9 +8,19 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Formik, useFormik } from 'formik';
 import * as yup from 'yup';
 
-function MedicineForm({Adddata}) {
+
+function MedicineForm({ Adddata, onupdate }) {
 
   const [open, setOpen] = React.useState(false);
+
+  useEffect(() => {
+    if (onupdate) {
+
+      formik.setValues(onupdate);
+      handleClickOpen();
+
+    }
+  }, [onupdate])
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -53,11 +63,9 @@ function MedicineForm({Adddata}) {
     onSubmit: (values, action) => {
 
       action.resetForm()
-      // handleSubmitData(values)
-      // const handleSubmitData =(values) =>{
-        Adddata(values)
-      // }
-      
+
+      Adddata(values)
+
       handleClose();
     },
 

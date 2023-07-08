@@ -1,29 +1,35 @@
+import { red } from '@mui/material/colors';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup'
+import Button from '../UI/Button/Button';
 
 function Auth(props) {
 
-    const [authdata, setAuthType] = useState('login')
+    const [authtype, setauthtype] = useState('login');
 
-    let authobj = {}, initialValue={}
-    if (authdata === 'login') {
+    const navigate = useNavigate();
+
+    let authobj = {}, initialValue = {}
+    if (authtype === 'login') {
         authobj = {
             email: Yup.string().required('Enter Email id').email('Enter Valid Email'),
-            password: Yup.string().required('Enter Password').matches('^([@#](?=[^aeiou]{7,13}$)(?=[[:alnum:]]{7,13}$)(?=.*[A-Z]{1,}.*$).+)$','Password Must be Match')
+            password: Yup.string().required('Enter Password')
+            // .matches('(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"', 'Password Must be Match')
         }
-        initialValue ={
-            email : '',
-            password : ''
+        initialValue = {
+            email: '',
+            password: ''
         }
-    } else if (authdata === 'signup') {
+    } else if (authtype === 'signup') {
         authobj = {
             name: Yup.string().required('Enter Name'),
             email: Yup.string().required('Enter Email id').email('Enter Valid Email'),
             password: Yup.string().required('Enter Password')
         }
         initialValue = {
-            name : '',
+            name: '',
             email: '',
             password: ''
         }
@@ -32,24 +38,46 @@ function Auth(props) {
             email: Yup.string().required('Enter Email id').email('Enter Valid Email'),
         }
         initialValue = {
-            email : ''
+            email: ''
         }
     }
 
-    const authSchema = Yup.object(authobj)
+    const authSchema = Yup.object(authobj);
 
     const formik = useFormik({
-        initialValues : initialValue,
+        initialValues: initialValue,
         validationSchema: authSchema,
-        enableReinitialize : true,
+        enableReinitialize: true,
         onSubmit: (value, action) => {
             console.log(value);
             action.resetForm()
         }
     })
 
+    const handleLogin = (() => {
+        localStorage.setItem("LoginData", 'true');
+        navigate('/')
+    })
+
+    const handleRegister = (() => {
+
+    })
+
+    const handleForget = (() => {
+
+    })
+
+
+    if (authtype === 'login') {
+        handleLogin();
+    } else if (authtype === 'signup') {
+        handleRegister();
+    } else if (authtype === 'forget') {
+        handleForget();
+    }
+
+
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = formik;
-    const [authtype, setauthtype] = useState('login');
 
     return (
         <section id="appointment" className="appointment">
@@ -89,7 +117,7 @@ function Auth(props) {
                                 placeholder="Your Email"
                             />
                             <div className="validate" />
-                            <span className='err'>{errors.email && touched.email ? errors.email : ''}</span>
+                            <span className='err' style={{ color: 'red' }}>{errors.email && touched.email ? errors.email : ''}</span>
                         </div>
                         {
                             authtype !== 'forget' ? <div className="col-md-7 form-group mt-3 mt-md-0">
@@ -103,24 +131,28 @@ function Auth(props) {
                                     placeholder="Your Password"
                                 />
                                 <div className="validate" />
-                                <span className='err'>{errors.password && touched.password ? errors.password : ''}</span>
+                                <span className='err' style={{ color: 'red' }}>{errors.password && touched.password ? errors.password : ''}</span>
                             </div> : null
                         }
                         <div className="text-center m-2">
                             {
-                                authtype === 'login' ? <a href='#' onClick={(() => setauthtype('forget'))}>Forgot password?</a>
+                                authtype === 'login' ?
+                                    <a href='#' onClick={(() => setauthtype('forget'))}>Forgot password?</a>
                                     : null
                             }
                         </div>
                     </div>
                     {
-                        authtype === 'login' ? <div className="text-center"><button type="submit">Login</button></div>
-                            : authtype === 'signup' ? <div className="text-center"><button type="submit">Signup</button></div>
-                                : <div className="text-center"><button type="submit">Send OTP</button></div>
+                        authtype === 'login' ?
+                            <div className="text-center"><Button type='primary'>Login</Button></div>
+                            : authtype === 'signup' ?
+                                <div className="text-center"><Button type='secondary'>Signup</Button></div>
+                                : <div className="text-center"><Button type='outlined'>Send OTP</Button></div>
                     }
                     <div className="text-center m-2">
                         {
-                            authtype === 'login' ? <span>Don't have an account <a href='#' onClick={() => setauthtype('signup')}>Signup</a></span>
+                            authtype === 'login' ?
+                                <span>Don't have an account <a href='#' onClick={() => setauthtype('signup')}>Signup</a></span>
                                 : <span>Already have an account <a href='#' onClick={() => setauthtype('login')}>Login</a></span>
                         }
                     </div>

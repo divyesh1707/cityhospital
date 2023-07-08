@@ -44,19 +44,17 @@ export default function FormDialog() {
         setItems(localdata)
       }
 
-     
     }
 
-    
     setUpdate(null);
-    
+
   };
 
 
   const handleDelete = (id) => {
-    let localData = JSON.parse(localStorage.getItem("medicines"));
+    let localdata = JSON.parse(localStorage.getItem("medicines"));
 
-    let fdata = localData.filter((v, i) => v.id !== id)
+    let fdata = localdata.filter((v, i) => v.id !== id)
 
     localStorage.setItem("medicines", JSON.stringify(fdata))
 
@@ -64,25 +62,21 @@ export default function FormDialog() {
   }
 
   React.useEffect(() => {
-    let localData = JSON.parse(localStorage.getItem("medicines"));
+    let localdata = JSON.parse(localStorage.getItem("medicines"));
 
-    if (localData !== null) {
-      setItems(localData)
+    if (localdata !== null) {
+      setItems(localdata)
     }
 
   }, []);
 
-  // const handleEdit = (data) => {
+  const handleEdit = (data) => {
 
-  //   handleClickOpen();
+    console.log(data);
 
-  //   formik.setValues(data);
+    setUpdate(data);
 
-  //   console.log(data);
-
-  //   setUpdate(data);
-
-  // }
+  }
 
   const columns = [
 
@@ -101,9 +95,9 @@ export default function FormDialog() {
             <DeleteIcon />
           </IconButton>
 
-          {/* <IconButton aria-label="edit" onClick={() => handleEdit(params.row)}>
+          <IconButton aria-label="edit" onClick={() => handleEdit(params.row)}>
             <EditIcon />
-          </IconButton> */}
+          </IconButton>
         </>
       ),
 
@@ -113,7 +107,7 @@ export default function FormDialog() {
 
   return (
     <>
-      <MedicineForm Adddata={handleSubmitData}/>
+      <MedicineForm Adddata={handleSubmitData} onupdate={update} />
 
       <div style={{ height: 400, width: '100%' }}>
         <DataGrid

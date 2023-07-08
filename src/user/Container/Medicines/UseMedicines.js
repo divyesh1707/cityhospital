@@ -12,7 +12,7 @@ function UseMedicines(props) {
         let localData = JSON.parse(localStorage.getItem("medicines"));
 
         if (localData) {
-            setData(localData)
+            setData(localData);
         }
 
         console.log(localData);

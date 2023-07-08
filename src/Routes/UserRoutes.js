@@ -16,6 +16,7 @@ import Auth1 from '../user/Container/Auth1';
 import Contact1 from '../user/Container/Contact1';
 import Auth from '../user/Container/Auth';
 import UseMedicines from '../user/Container/Medicines/UseMedicines';
+import Protected from './Protected';
 
 function UserRoutes(props) {
     return (
@@ -28,8 +29,8 @@ function UserRoutes(props) {
                 <Route path="/About" element={<About />} />
                 <Route path="/Contact1" element={<Contact1 />} />
                 <Route path="/Appointment" element={<Appointment />} />
-                <Route path="/Auth" element={<Auth />} />
-                <Route path='/UseMedicines' element={<UseMedicines/>}/>
+                <Route path="/Auth" element={<Auth/>} />
+                {/* <Route path='/UseMedicines' element={<UseMedicines />} /> */}
                 {/* <Route path="/Doctor/:id" element={<Doctor/>}/>
           <Route path="/Doctor/visiting_doctors" element={<VisitingDoctors/>}/> */}
 
@@ -38,6 +39,10 @@ function UserRoutes(props) {
                     <Route path=":id" element={<Doctor />} />
                     <Route path="visiting_doctors" element={<VisitingDoctors />} />
                 </Route>
+
+                <Route element={<Protected />} />
+                <Route path='/Usemedicines' element={<UseMedicines/>} />
+                <Route />
 
                 {/* <Route path='*' element={<NotFound/>}/> */}
                 <Route path='/ForgotPass' element={<ForgotPass />} />
