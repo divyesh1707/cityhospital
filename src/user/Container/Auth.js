@@ -28,7 +28,7 @@ function Auth(props) {
         authobj = {
             name: Yup.string().required('Enter Name'),
             email: Yup.string().required('Enter Email id').email('Enter Valid Email'),
-            password: Yup.string().required('Enter Password')
+            password: Yup.string().required('Enter Password'),
         }
         initialValue = {
             name: '',
@@ -59,8 +59,9 @@ function Auth(props) {
             } else if (authtype === 'forget') {
                 handleForget();
             }
+
             console.log(value);
-            action.resetForm()
+            action.resetForm();
         }
     })
 
@@ -84,10 +85,10 @@ function Auth(props) {
         <section id="appointment" className="appointment">
             <div className="container">
                 <div className="section-title">
-                    {/* {
+                    {
                         authtype === 'login' ? <h2>Login</h2>
                             : authtype === 'signup' ? <h2>Signup</h2> : <h2>Reset Password</h2>
-                    } */}
+                    }
                 </div>
                 <form action method="post" role="form" className="php-email-form" onSubmit={handleSubmit}>
                     <div className="row justify-content-center ">
@@ -103,9 +104,9 @@ function Auth(props) {
                                         onBlur={handleBlur}
                                         onChange={handleChange}
                                         placeholder="Your Name"
+                                        errorText={errors.name && touched.name ? errors.name : ''}
                                     />
                                     <div className="validate" />
-                                    <span className='err'>{errors.name && touched.name ? errors.name : ''}</span>
                                 </div>
                         }
                         <div className="col-md-7 form-group mt-3 mt-md-0">
@@ -116,9 +117,9 @@ function Auth(props) {
                                 onBlur={handleBlur}
                                 onChange={handleChange}
                                 placeholder="Your Email"
+                                errorText={errors.email && touched.email ? errors.email : ''}
                             />
                             <div className="validate" />
-                            <span className='err' style={{ color: 'red' }}>{errors.email && touched.email ? errors.email : ''}</span>
                         </div>
                         {
                             authtype !== 'forget' ? <div className="col-md-7 form-group mt-3 mt-md-0">
@@ -130,9 +131,10 @@ function Auth(props) {
                                     onBlur={handleBlur}
                                     onChange={handleChange}
                                     placeholder="Your Password"
+                                    errorText={errors.password && touched.password ? errors.password : ''}
                                 />
                                 <div className="validate" />
-                                <span className='err' style={{ color: 'red' }}>{errors.password && touched.password ? errors.password : ''}</span>
+                                {/* <span className='err' style={{ color: 'red' }}>{errors.password && touched.password ? errors.password : ''}</span> */}
                             </div> : null
                         }
                         <div className="text-center m-2">

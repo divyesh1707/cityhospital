@@ -1,13 +1,12 @@
-import styled from "@emotion/styled";
+import styled from 'styled-components';
 
 export const Baseinput = styled.input`
-  border-radius: 2px;
-  color: #BF4F74;
-  font-size: 1em;
-  border: 2px solid #BF4F74;
-  width: 100%;
+
+border: ${props => props.errorText !== '' ? '1px solid red' : '1px solid gray'};
 `;
 
-export const primaryInput = styled(Baseinput)`
+export const InputError = styled.span`
 
+display: ${props => props.errorText !== '' ? 'inline-block'  : 'none' };
+color: red;
 `;

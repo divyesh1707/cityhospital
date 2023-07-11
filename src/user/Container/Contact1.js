@@ -5,10 +5,10 @@ import * as yup from 'yup';
 function Contact1(props) {
 
     let userSchema = yup.object({
-        name: yup.string().required('please enter a name').matches(/^[a-zA-Z ]+$/, 'please enter a valid name'),
-        email: yup.string().email().required('please enter a email'),
-        subject: yup.string().required('please enter a subject'),
-        message: yup.string().required('please enter a message')
+        name: yup.string().required('Please Enter Name').matches(/^[a-zA-Z ]+$/, 'Please Enter a Valid Name'),
+        email: yup.string().email().required('Please Enter a Email'),
+        subject: yup.string().required('Please Enter Subject'),
+        message: yup.string().required('Please Enter Message')
             .test('message', 'maximum 5 word allowed',
 
                 function (val) {
@@ -35,7 +35,7 @@ function Contact1(props) {
             message: ''
         },
         onSubmit: values => {
-
+            console.log(values);
         },
     });
 

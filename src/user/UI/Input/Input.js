@@ -1,21 +1,14 @@
-import { type } from '@testing-library/user-event/dist/type';
 import React from 'react';
-import {primaryInput} from './Input.style'
+import { Baseinput, InputError } from './Input.style';
 
-function Input({children,type}) {
-    const customInput = () => {
-        switch (type) {
-            case 'primary':
-                return primaryInput;
-            default:
-                return primaryInput;
-        }
-    }
-    const CustomInputCall = customInput();
+function Input({errorText, ...rest}) {
     return (
-        <CustomInputCall>
-            {children}
-        </CustomInputCall>
+        <>
+         <Baseinput className = "form-control" errorText={errorText} {...rest}/>
+         <InputError errorText={errorText}>
+            {errorText}
+         </InputError>
+        </>
     );
 }
 
