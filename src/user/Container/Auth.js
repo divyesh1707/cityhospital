@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup'
 import Button from '../UI/Button/Button';
+import { ButtonBase } from '@mui/material';
+import Input from '../UI/Input/Input';
 
 function Auth(props) {
 
@@ -49,6 +51,14 @@ function Auth(props) {
         validationSchema: authSchema,
         enableReinitialize: true,
         onSubmit: (value, action) => {
+
+            if (authtype === 'login') {
+                handleLogin();
+            } else if (authtype === 'signup') {
+                handleRegister();
+            } else if (authtype === 'forget') {
+                handleForget();
+            }
             console.log(value);
             action.resetForm()
         }
@@ -68,15 +78,6 @@ function Auth(props) {
     })
 
 
-    if (authtype === 'login') {
-        handleLogin();
-    } else if (authtype === 'signup') {
-        handleRegister();
-    } else if (authtype === 'forget') {
-        handleForget();
-    }
-
-
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = formik;
 
     return (
@@ -94,8 +95,8 @@ function Auth(props) {
                             authtype === 'login' || authtype === 'forget' ? null :
 
                                 <div className="col-md-7 form-group">
-                                    <input type="text"
-                                        name="name"
+                                    <Input type="text"
+                                        ninputame="name"
                                         className="form-control"
                                         id="name"
                                         value={values.name}
@@ -108,7 +109,7 @@ function Auth(props) {
                                 </div>
                         }
                         <div className="col-md-7 form-group mt-3 mt-md-0">
-                            <input type="email"
+                            <Input type="email"
                                 className="form-control"
                                 name="email" id="email"
                                 value={values.email}
@@ -121,7 +122,7 @@ function Auth(props) {
                         </div>
                         {
                             authtype !== 'forget' ? <div className="col-md-7 form-group mt-3 mt-md-0">
-                                <input type="password"
+                                <Input type="password"
                                     className="form-control"
                                     name="password"
                                     id="password"

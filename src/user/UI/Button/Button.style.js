@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 
 export const Basebutton = styled.button`
-border-radius: 3px;
+border-radius: 10px;
 border: 2px solid #BF4F74;
 margin: 0 1em;
 padding: 0.25em 1em;
@@ -10,10 +10,10 @@ padding: 0.25em 1em;
 
 export const primaryButton = styled(Basebutton)`
 background: red;
-color: #BF4F74;
+color: black;
 
 &:hover{
-    background: blue;
+    background: yellow;
 }
 `;
 
